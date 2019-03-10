@@ -1,5 +1,6 @@
 <template>
   <div class="today">
+    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut recusandae vel ratione tempora. Voluptas quasi harum cupiditate eos enim vitae totam accusamus quam. Laboriosam autem praesentium beatae itaque pariatur provident.</h1>
     <v-list class="mt-4">
       <!-- 1 item start -->
       <v-list-tile
