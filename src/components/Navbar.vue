@@ -17,16 +17,11 @@
         color="secondary lighten-4"
         :rules="inputRules"
         dark
-        :value="value"
+        :value="computedValue"
         @input="handleChange"
         type="text"
         v-model="value"
       ></v-text-field>
-      <!--
-      <v-btn flat color>
-        <span>sign out</span>
-        <v-icon right>exit_to_app</v-icon>
-      </v-btn>-->
     </v-toolbar>
   </nav>
 </template>
@@ -48,11 +43,17 @@ export default {
     };
   },
   methods: {
-    handleChange(e) {
+    handleChange() {
       // console.log(`to jest value: ${this.value}`);
       //(name of emmited event, value)
       // nazwa "input" tutaj jak i event w v-text field i event w app.vue na komponencie Navbar musi być taki sam
-      this.$emit("input", this.value);
+      this.$emit("input", this.computedValue);
+      // this.$emit("input", e.target.value);
+    }
+  },
+  computed: {
+    computedValue() {
+      return this.value;
     }
   }
 };

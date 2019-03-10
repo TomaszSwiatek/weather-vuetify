@@ -11,9 +11,14 @@
         <router-link to="/today">Weather</router-link>
         <router-link to="/today">Weather</router-link>-->
         <!-- results -->
-        <Item v-for="item in results" :item="item" :key="item.dt"/>
+        <div class="item-wrapper" v-if="results && !loading && step === 1">
+          <router-link to="fiveDay">5 day / 3 hour forecast</router-link>
+          <router-link to="/sixteenDay">16 day / daily forecast</router-link>
+          <Item v-for="item in results" :item="item" :key="item.dt"/>
+        </div>
+
         <!-- results end -->
-        <Home/>
+        <Home v-if="step === 0"/>
         <!-- tu zrobic tez v-if="step === 0"               a może !== 1-->
         <!-- <router-view></router-view> -->
       </v-container>
