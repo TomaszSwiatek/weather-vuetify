@@ -1,18 +1,21 @@
 <template>
   <v-app>
     <!-- z navbara wyemitować event tak jak zrobic to roman  (tylko trzeba dane wyciagnacz inputa) i potem obsluzyc ten event juz tutaj -->
-    <Navbar class="mb-4" @vTextField="handleNavbarVTextField" v-model="navbarVTextFieldValue"/>
+    <Navbar class="mb-4" @input="handleNavbarVTextField" v-model="navbarVTextFieldValue"/>
 
     <v-content>
       <v-container fluid>
         <!-- tu <routes> mozna wrzucic wszystkie linki i je wyswietlacw kazdym widoku ale v-if ="step === 1" </routes> -->
         <!-- strzelam ze ten step mozna przekazac jako prop do innych componentow ktore dzialaja w routerze i tez nimi w ten sposob sterowac i w ten sposób zaznaczyc ze today ma sie wyswietlac jak step === 1  -->
+        <!-- <router-link to="/today">Weather</router-link>
         <router-link to="/today">Weather</router-link>
-        <router-link to="/today">Weather</router-link>
-        <router-link to="/today">Weather</router-link>
+        <router-link to="/today">Weather</router-link>-->
+        <!-- results -->
+        <Item v-for="item in results" :item="item" :key="item.dt"/>
+        <!-- results end -->
         <Home/>
         <!-- tu zrobic tez v-if="step === 0"               a może !== 1-->
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
       </v-container>
     </v-content>
     <!-- <v-footer app></v-footer> -->
@@ -22,15 +25,19 @@
 <script>
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
+import Item from "./components/Item";
 
 import axios from "axios";
 import debounce from "lodash.debounce";
 
+const API = "https://api.openweathermap.org/data/2.5/forecast?q=";
+const API_ID = "&appid=8516c35a5aa25a2690f4dca7c0d11239";
 export default {
   name: "App",
   components: {
     Navbar,
-    Home
+    Home,
+    Item
   },
   data() {
     return {
@@ -42,8 +49,6 @@ export default {
   },
   methods: {
     handleNavbarVTextField: debounce(function() {
-      const API = "https://api.openweathermap.org/data/2.5/forecast?q=";
-      const API_ID = "&appid=8516c35a5aa25a2690f4dca7c0d11239";
       this.loading = true; //when interpreter is exactly here loading turn to true.
       // console.log(this.searchValue);
       axios

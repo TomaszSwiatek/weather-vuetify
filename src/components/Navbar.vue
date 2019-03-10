@@ -19,6 +19,8 @@
         dark
         :value="value"
         @input="handleChange"
+        type="text"
+        v-model="value"
       ></v-text-field>
       <!--
       <v-btn flat color>
@@ -37,7 +39,6 @@ export default {
       required: true
     }
   },
-  components: {},
   data() {
     return {
       inputRules: [
@@ -48,8 +49,10 @@ export default {
   },
   methods: {
     handleChange(e) {
+      // console.log(`to jest value: ${this.value}`);
       //(name of emmited event, value)
-      this.$emit("vTextField", e.target.value);
+      // nazwa "input" tutaj jak i event w v-text field i event w app.vue na komponencie Navbar musi być taki sam
+      this.$emit("input", this.value);
     }
   }
 };

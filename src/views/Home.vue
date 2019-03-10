@@ -2,7 +2,7 @@
   <v-container>
     <v-layout text-xs-center wrap>
       <v-flex xs12 class="ma-4">
-        <v-avatar :tile="tile" size="200" color="grey lighten-4">
+        <v-avatar size="200" color="grey lighten-4">
           <v-img :src="require('../assets/logo.png')" class="my-3" contain height="200"></v-img>
         </v-avatar>
       </v-flex>
