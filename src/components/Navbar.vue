@@ -17,6 +17,8 @@
         color="secondary lighten-4"
         :rules="inputRules"
         dark
+        :value="value"
+        @input="handleChange"
       ></v-text-field>
       <!--
       <v-btn flat color>
@@ -29,6 +31,12 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: String,
+      required: true
+    }
+  },
   components: {},
   data() {
     return {
@@ -37,6 +45,12 @@ export default {
         v => v.length >= 3 || "Type at least 3 characters"
       ]
     };
+  },
+  methods: {
+    handleChange(e) {
+      //(name of emmited event, value)
+      this.$emit("vTextField", e.target.value);
+    }
   }
 };
 </script>

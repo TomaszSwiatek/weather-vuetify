@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- z navbara wyemitować event tak jak zrobic to roman  (tylko trzeba dane wyciagnacz inputa) i potem obsluzyc ten event juz tutaj -->
-    <Navbar class="mb-4"/>
+    <Navbar class="mb-4" @vTextField="handleNavbarVTextField" v-model="navbarVTextFieldValue"/>
 
     <v-content>
       <v-container fluid>
@@ -23,6 +23,9 @@
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
 
+import axios from "axios";
+import debounce from "lodash.debounce";
+
 export default {
   name: "App",
   components: {
@@ -31,8 +34,30 @@ export default {
   },
   data() {
     return {
-      //
+      navbarVTextFieldValue: "",
+      loading: false,
+      step: 0,
+      results: []
     };
+  },
+  methods: {
+    handleNavbarVTextField: debounce(function() {
+      const API = "https://api.openweathermap.org/data/2.5/forecast?q=";
+      const API_ID = "&appid=8516c35a5aa25a2690f4dca7c0d11239";
+      this.loading = true; //when interpreter is exactly here loading turn to true.
+      // console.log(this.searchValue);
+      axios
+        .get(`${API}${this.navbarVTextFieldValue}${API_ID}`)
+        .then(response => {
+          console.log(response.data.list);
+          this.results = response.data.list;
+          this.loading = false; //after this line loading again is false. we do it to manage states in tags with v-if directive.
+          this.step = 1; //after this line we change to second state.
+        })
+        .catch(error => {
+          console.log(`erorrrrr: ${error}`);
+        });
+    }, 500)
   }
 };
 </script>
