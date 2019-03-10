@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-item">
-    <!-- <span>{{date}}</span>
+    <span>{{date}}</span>
     <span class="description">{{`${description}`}}</span>
     <header>
       <img :src="src" :alt="description">
@@ -14,8 +14,8 @@
       <span>{{`Humidity:${humidity}`}}</span>
       <span>{{`Pressure:${Math.floor(pressure)} hPa`}}</span>
       <span>{{`Wind's speed: ${Math.floor(speed)} mph`}}</span>
-      <span>{{`Wind's direction: ${Math.floor(windDirection)}`}}</span> 
-    </main>-->
+      <span>{{`Wind's direction: ${Math.floor(windDirection)}`}}</span>
+    </main>
   </div>
 </template>
 
@@ -70,5 +70,48 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.wrapper-item {
+  font-family: "Open Sans", sans-serif;
 
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  background: #fff;
+
+  .description {
+    margin: 1rem 0;
+    font-size: 1.8rem;
+  }
+}
+img {
+  width: 30%;
+}
+header {
+  display: flex;
+  margin: 0.5rem;
+  align-items: center;
+  justify-content: space-evenly; //nie dziala kiedy ustawisz na rodzicu align items na center, lub cokolwiek
+  .temp {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1rem;
+}
+span {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.6rem;
+}
+</style>
 
