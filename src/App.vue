@@ -5,7 +5,7 @@
 
     <v-content>
       <v-container fluid>
-        <Today :results="results" v-if="results && !loading && step === 1"/>
+        <Weather :fiveDays="fiveDays" v-if="fiveDays && !loading && step === 1"/>
         <Home v-if="step === 0"/>
         <!-- <router-view></router-view> -->
       </v-container>
@@ -17,7 +17,7 @@
 <script>
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
-import Today from "./views/Today";
+import Weather from "./views/Weather";
 
 import axios from "axios";
 import debounce from "lodash.debounce";
@@ -29,14 +29,14 @@ export default {
   components: {
     Navbar,
     Home,
-    Today
+    Weather
   },
   data() {
     return {
       navbarVTextFieldValue: "",
       loading: false,
       step: 0,
-      results: []
+      fiveDays: []
     };
   },
   methods: {
@@ -47,7 +47,7 @@ export default {
         .get(`${API}${this.navbarVTextFieldValue}${API_ID}`)
         .then(response => {
           console.log(response.data.list);
-          this.results = response.data.list;
+          this.fiveDays = response.data.list;
           this.loading = false; //after this line loading again is false. we do it to manage states in tags with v-if directive.
           this.step = 1; //after this line we change to second state.
         })

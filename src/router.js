@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import Today from "./views/Today.vue";
+import Weather from "./views/Weather.vue";
 
 Vue.use(Router);
 
@@ -15,9 +15,9 @@ export default new Router({
       component: Home
     },
     {
-      path: "/today",
-      name: "today",
-      component: Today
+      path: "/weather",
+      name: "weather",
+      component: Weather
     }
   ]
 });
