@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-item">
-    <!-- <span>{{date}}</span>
+    <span>{{date}}</span>
     <span class="description">{{`${description}`}}</span>
     <header>
       <img :src="src" :alt="description">
@@ -14,8 +14,8 @@
       <span>{{`Humidity:${humidity}`}}</span>
       <span>{{`Pressure:${Math.floor(pressure)} hPa`}}</span>
       <span>{{`Wind's speed: ${Math.floor(speed)} mph`}}</span>
-      <span>{{`Wind's direction: ${Math.floor(windDirection)}`}}</span> 
-    </main>-->
+      <span>{{`Wind's direction: ${Math.floor(windDirection)}`}}</span>
+    </main>
   </div>
 </template>
 
