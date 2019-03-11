@@ -28,7 +28,7 @@
           <v-tab-item>
             <v-card flat>
               <v-card-text>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio cum maxime maiores earum dignissimos molestias vitae reiciendis accusantium consequuntur ducimus.</p>
+                <Today :today="today"/>
               </v-card-text>
             </v-card>
           </v-tab-item>
@@ -55,6 +55,7 @@
 
 <script>
 import FiveDay from "@/views/FiveDay";
+import Today from "@/views/Today";
 export default {
   data() {
     return {
@@ -64,11 +65,16 @@ export default {
     };
   },
   components: {
-    FiveDay
+    FiveDay,
+    Today
   },
   props: {
     fiveDays: {
       type: Array,
+      required: true
+    },
+    today: {
+      type: Object,
       required: true
     }
   }

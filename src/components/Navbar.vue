@@ -19,6 +19,7 @@
         dark
         :value="computedValue"
         @input="handleChange"
+        @inputToday="handleChange"
         type="text"
         v-model="value"
       ></v-text-field>
@@ -48,6 +49,7 @@ export default {
       //(name of emmited event, value)
       // nazwa "input" tutaj jak i event w v-text field i event w app.vue na komponencie Navbar musi być taki sam
       this.$emit("input", this.computedValue);
+      this.$emit("inputToday", this.computedValue);
       // this.$emit("input", e.target.value);
     }
   },
