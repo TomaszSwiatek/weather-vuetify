@@ -63,9 +63,6 @@ export default {
     toCelcius(kelvin) {
       return `${Math.floor(kelvin - 273.15)}`;
     },
-    windsDirection(angle) {
-      angle;
-    },
     // Create an array the length of our items
     // with all values as true
     // expansion panel methods - buttons - all / none

@@ -43,7 +43,9 @@
           <!-- 16 DAY -->
           <v-tab-item>
             <v-card flat>
-              <v-card-text>{{ text }}ccccccccccc</v-card-text>
+              <v-card-text>
+                <FiveDayChart :fiveDays="fiveDays"/>
+              </v-card-text>
             </v-card>
           </v-tab-item>
           <v-spacer></v-spacer>
@@ -55,6 +57,7 @@
 
 <script>
 import FiveDay from "@/views/FiveDay";
+import FiveDayChart from "@/views/FiveDayChart";
 import Today from "@/views/Today";
 export default {
   data() {
@@ -66,7 +69,8 @@ export default {
   },
   components: {
     FiveDay,
-    Today
+    Today,
+    FiveDayChart
   },
   props: {
     fiveDays: {
