@@ -36,7 +36,7 @@
           <v-tab-item>
             <v-card flat>
               <v-card-text>
-                <FiveDay :fiveDays="fiveDays"></FiveDay>
+                <FiveDay :fiveDays="fiveDays" @item="item"></FiveDay>
               </v-card-text>
             </v-card>
           </v-tab-item>

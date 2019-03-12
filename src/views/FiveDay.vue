@@ -5,7 +5,7 @@
       <v-btn flat outline color="accent" @click="none">hide all</v-btn>
     </div>
     <v-expansion-panel popout v-model="panel" expand>
-      <v-expansion-panel-content v-for="item in fiveDays" :item="item" :key="item.dt">
+      <v-expansion-panel-content v-for="item in fiveDays" :item="item" :key="item.dt" @item="item">
         <template v-slot:header>
           <v-container>
             <v-layout row wrap>
@@ -72,6 +72,9 @@ export default {
     // Reset the panel
     none() {
       this.panel = [];
+    },
+    item() {
+      this.$emit("item", this.item);
     }
   },
   computed: {
