@@ -10,6 +10,7 @@
       :gradient-direction="gradientDirection"
       auto-draw
       show-labels
+      :labels="labels"
     ></v-sparkline>
     <v-btn @click="sparklineClick">click</v-btn>
   </v-container>
@@ -26,7 +27,8 @@ export default {
       lineCap: "round",
       gradient: ["#f72047", "#ffd200", "#1feaea"],
       gradientDirection: "top",
-      temp: this.fiveDays.map(({ main }) => main.temp)
+      temp: this.fiveDays.map(({ main }) => main.temp),
+      labels: this.fiveDays.map(({ dt_txt }) => dt_txt)
     };
   },
   props: {
@@ -42,6 +44,7 @@ export default {
     sparklineClick() {
       //mapowanie: this.fiveDays.map(({ nazwa nowej tablicy }) => podanie struktury obiektu do ktorej chcemy sie dostac)
       console.log(`click ${this.fiveDays.map(({ main }) => main.temp)}`);
+      console.log(`click ${this.fiveDays.map(({ dt_txt }) => dt_txt)}`);
     }
   },
   computed: {
