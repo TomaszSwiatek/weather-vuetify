@@ -1,5 +1,10 @@
 # weather-vuetify
 
+## Description
+```
+Application under construction. The application downloads the data of the selected city, shows weather data for 5 days in three-hour periods, and details for today. Draws a graph of temperature changes for the next 24 hours. 
+```
+
 ## Project setup
 ```
 yarn install
